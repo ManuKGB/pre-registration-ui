@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-
 import Swal from 'sweetalert2';
 
 import {
@@ -23,10 +22,10 @@ import { FooterComponentComponent } from './footer-component/footer-component.co
     CommonModule,
     ReactiveFormsModule,
     HeaderComponentComponent,
-    FooterComponentComponent
-  ], 
+    FooterComponentComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   title = 'pre-registration-ui';
@@ -38,7 +37,7 @@ export class AppComponent implements OnInit {
     this.captchaForm = new FormGroup({
       language: new FormControl('français', Validators.required),
       authentication: new FormControl('email', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      verifId: new FormControl(''),
       captcha: new FormControl('', Validators.required),
     });
   }
@@ -51,24 +50,42 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service
+    
+    if (this.captchaForm.valid) {
+      this.service
       .validateCaptcha(this.captchaId, this.captchaForm.value.captcha)
       .subscribe((response: any) => {
         if (response.challenge == 'success') {
+          console.log("email to send to "+this.captchaForm.value.verifId);
           Swal.fire({
+            position: 'top-end',
             title: 'Good job!',
             text: 'Captcha validé!',
             icon: 'success',
+            timer: 1000,
+            showConfirmButton: false,
           });
         } else if (response.challenge == 'fail') {
           Swal.fire({
+            position: 'top-end',
             title: 'Error!',
             text: 'Captcha incorrect!',
             icon: 'error',
+            timer: 1000,
+            showConfirmButton: false,
           });
         }
       });
+    }else{
+      Swal.fire({
+        position: 'top-end',
+        title: 'Error!',
+        text: 'Verifier les champs !',
+        icon: 'error',
+        timer: 1000,
+        showConfirmButton: false,
+      });
+    }
+   
   }
-
-
 }

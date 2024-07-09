@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class ServicesService {
 
-  baseUrl="https://captcha-web-service-v2-0.onrender.com/api/captcha"
+  baseUrl="https://captcha-web-service.onrender.com/api/captcha"
 
   constructor(private http : HttpClient) {
     

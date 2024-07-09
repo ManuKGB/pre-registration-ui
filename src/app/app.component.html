@@ -1,67 +1,94 @@
 <router-outlet>
     <app-header-component></app-header-component>
-  
     <main>
-      <section class="hero">
-        <div class="container">
-          <h1>Pré-Enregistrement</h1>
-          <p>Bienvenue dans le parcours de pré-enregistrement du Programme National d'Identification</p>
-        </div>
-      </section>
-  
-      <nav class="breadcrumb">
-        <div class="container">
-          <a href="#">Accueil</a> 
-          <a href="#">Pré-enregistrement</a> 
-          <a href="#">Login</a>
-        </div>
-      </nav>
-  
-      <section class="steps">
-        <div class="container">
-          <div class="left card">
-            <h2>Pré-enregistrement</h2>
-            <p>Vous serez amené dans les prochaines étapes à remplir le formulaire d'enregistrement en ligne afin de pouvoir vous rendre dans un centre d'enregistrement.</p>
-            <p>Cette procédure est facultative, mais elle vous permettra de gagner du temps lors de votre visite au centre d'enregistrement.</p>
-            <p>Pour commencer votre pré-enregistrement, veuillez saisir votre numéro de téléphone ou votre adresse e-mail personnel pour recevoir le code d'accès.</p>
-          </div>
-          <div class="right card">
-            <h2>Étapes rapides et faciles</h2>
-            <p>Merci de choisir la langue et saisir l'adresse Email ou le numéro de GSM.</p>
-            <form [formGroup]="captchaForm" (ngSubmit)="onSubmit()" class="highlight">
-              <label for="language">Langage de l'application</label>
-              <select id="language" formControlName="language">
-                <option value="français">FRANÇAIS</option>
-                <option value="anglais">ANGLAIS</option>
-              </select>
-  
-              <label for="authentication">Canal d'authentification</label>
-              <select id="authentication" formControlName="authentication">
-                <option value="email">EMAIL</option>
-                <option value="tel">TELEPHONE</option>
-              </select>
+        <section class="hero">
+            <div class="container">
+                <h1>Pré-Enregistrement</h1>
+                <p>
+                    Bienvenue dans le parcours de pré-enregistrement du Programme National
+                    d'Identification
+                </p>
+            </div>
+        </section>
 
-              <div *ngIf="captchaForm.get('authentication')?.value === 'email'">
-                <label for="email">Adresse Email</label>
-                <input type="email" id="email" formControlName="email" required>
-              </div>
-            
-              <div *ngIf="captchaForm.get('authentication')?.value === 'tel'">
-                <label for="phone">Numéro de Téléphone</label>
-                <input type="tel" id="phone" formControlName="phone" required>
-              </div>
-  
-              <label for="captcha">Captcha</label>
-              <img *ngIf="base64Image" [src]="base64Image" alt="Captcha Image" class="captcha-image">
-              <input type="text" id="captcha" formControlName="captcha" required>
+        <nav class="breadcrumb">
+            <div class="container">
+                <a href="#">Accueil</a>
+                <a href="#">Pré-enregistrement</a>
+                <a href="#">Login</a>
+            </div>
+        </nav>
 
-              <button type="submit" >Soumettre</button>
-            </form>
-          </div>
-        </div>
-      </section>
+        <section class="steps">
+            <div class="container">
+                <div class="left card">
+                    <h2>Pré-enregistrement</h2>
+                    <p>
+                        Vous serez amené dans les prochaines étapes à remplir le formulaire
+                        d'enregistrement en ligne afin de pouvoir vous rendre dans un centre
+                        d'enregistrement.
+                    </p>
+                    <p>
+                        Cette procédure est facultative, mais elle vous permettra de gagner
+                        du temps lors de votre visite au centre d'enregistrement.
+                    </p>
+                    <p>
+                        Pour commencer votre pré-enregistrement, veuillez saisir votre
+                        numéro de téléphone ou votre adresse e-mail personnel pour recevoir
+                        le code d'accès.
+                    </p>
+                </div>
+                <div class="right card">
+                    <h2>Étapes rapides et faciles</h2>
+                    <p>
+                        Merci de choisir la langue et saisir l'adresse Email ou le numéro de
+                        GSM.
+                    </p>
+                    <form [formGroup]="captchaForm" (ngSubmit)="onSubmit()" class="highlight">
+                        <label for="language">Langage de l'application</label>
+                        <select id="language" formControlName="language">
+                            <option value="français">FRANÇAIS</option>
+                            <option value="anglais">ANGLAIS</option>
+                        </select>
+
+                        <label for="authentication">Canal d'authentification</label>
+                        <select id="authentication" formControlName="authentication">
+                            <option value="email">EMAIL</option>
+                            <option value="phone">TELEPHONE</option>
+                        </select>
+
+                        <div *ngIf="captchaForm.get('authentication')?.value === 'email'">
+                            <label for="email">Adresse Email</label>
+                            <input type="email" id="email" formControlName="verifId" required
+                                placeholder="Entrez votre adresse e-mail" />
+                        </div>
+
+                        <div *ngIf="captchaForm.get('authentication')?.value === 'phone'">
+                            <div class="phone-input-row">
+                                <div class="phone-indicatif">
+                                    <label for="indicatif">Indicatif</label>
+                                    <input type="text" id="indicatif" value="+228" readonly />
+                                </div>
+                                <div class="phone-numero">
+                                    <label for="numero">Numéro de Téléphone</label>
+                                    <input type="tel" id="numero" formControlName="verifId" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <img *ngIf="base64Image" [src]="base64Image" alt="Captcha Image" class="captcha-image" />
+                        <input type="text" id="captcha" formControlName="captcha" required placeholder="CAPTCHA" />
+
+                        <button type="submit">
+                            <strong>
+                                ENVOYER CODE ACCES
+                            </strong>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
-  
+
     <app-footer-component></app-footer-component>
-  </router-outlet>
-  
+</router-outlet>

@@ -129,11 +129,11 @@ body {
     padding: 20px;
 } */
 
-.steps form {
+/* .steps form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
+} */
 
 .steps label {
     font-size: 16px;
@@ -185,7 +185,103 @@ body {
     margin-bottom: 16px;
   }
   
-  button {
+  /* button {
     display: block;
     margin: 20px 0;
+  } */
+
+  /* Styles généraux pour toute l'application */
+
+  
+  /* Styles spécifiques pour les champs de formulaire */
+  form.highlight {
+    padding: 20px;
+    /* border: 1px solid #ddd; */
+    border-radius: 8px;
+    /* background-color: #f9f9f9; */
   }
+  
+  form.highlight label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  form.highlight input[type="email"],
+  form.highlight input[type="tel"],
+  form.highlight input[type="text"],
+  form.highlight select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+    font-family: 'Poppins'
+  }
+  
+  form.highlight input[type="email"]:focus,
+  form.highlight input[type="tel"]:focus,
+  form.highlight input[type="text"]:focus,
+  form.highlight select:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+  }
+  
+  form.highlight .captcha-image {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  form.highlight button[type="submit"] {
+    width: 40%;
+    padding: 5px;
+    height: 35px;
+    background-color: #0aa17a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Poppins';
+  }
+  
+
+  
+ 
+  .phone-input-row {
+    display: flex;
+    align-items: center;
+}
+
+.phone-indicatif {
+    flex: 1;
+    margin-right: 10px;
+    
+}
+
+.phone-numero {
+    flex: 3;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+}
