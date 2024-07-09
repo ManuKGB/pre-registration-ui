@@ -1,0 +1,191 @@
+body {
+    font-family: 'Poppins'
+  }
+
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: center; /* Centrer le logo */
+    align-items: center;
+    position: relative; /* Pour positionner les liens de langue et support */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.captcha-image {
+    width: 200px; /* Ajuste la largeur selon tes besoins */
+    height: 20px; /* Conserve le ratio de l'image */
+    border: 1px solid #ccc; /* Optionnel : ajoute une bordure pour le style */
+    margin: 10px 0; /* Optionnel : ajoute une marge */
+  }
+  
+.logo img {
+    height: 50px;
+}
+
+.language-support {
+    position: absolute; /* Position absolue pour les liens */
+    right: 20px; /* Déplacer les liens vers la droite */
+    display: flex;
+    gap: 20px;
+}
+
+.language, .support {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.hero {
+    background: url('../assets/images/back.png') no-repeat center center; /* Remplacer le fond bleu par une image */
+    background-size: cover;
+    color: #fff;
+    padding: 120px 20px; /* Augmentation de la hauteur */
+    text-align: center;
+}
+
+.hero .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 70px; /* Augmentation de la taille de la police */
+    margin: 0 0 20px;
+}
+
+.hero p {
+    font-size: 24px; /* Augmentation de la taille de la police */
+    margin: 0;
+}
+
+.breadcrumb {
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    border-radius: 30px; /* Coins arrondis */
+    margin: 20px 20px; /* Ajout d'espaces de chaque côté */
+}
+
+.breadcrumb .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.breadcrumb a:not(:last-child)::after {
+    content: '/';
+    margin: 0 5px;
+}
+
+.steps {
+    padding: 40px 20px;
+}
+
+.steps .container {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.steps .left, .steps .right {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 30px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 30px; /* Coins arrondis pour toutes les cartes */
+}
+
+.steps h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.steps p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* .highlight {
+   
+    border-radius: 25px; 
+    padding: 20px;
+} */
+
+.steps form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.steps label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.steps select, .steps input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.steps img {
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+.steps button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #003366;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.steps button:hover {
+    background-color: #002244;
+}
+
+.footer {
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    display: block;
+    margin: 20px 0;
+  }
