@@ -1,15 +1,5 @@
 <router-outlet>
-    <header class="header">
-      <div class="container">
-        <div class="logo">
-          <img src="assets/images/atos-logo.png" alt="">
-        </div>
-        <div class="language-support">
-          <a href="#" class="language">ENG</a>
-          <a href="#" class="support">SUPPORT</a>
-        </div>
-      </div>
-    </header>
+    <app-header-component></app-header-component>
   
     <main>
       <section class="hero">
@@ -21,8 +11,8 @@
   
       <nav class="breadcrumb">
         <div class="container">
-          <a href="#">Accueil</a> /
-          <a href="#">Pré-enregistrement</a> /
+          <a href="#">Accueil</a> 
+          <a href="#">Pré-enregistrement</a> 
           <a href="#">Login</a>
         </div>
       </nav>
@@ -48,17 +38,23 @@
               <label for="authentication">Canal d'authentification</label>
               <select id="authentication" formControlName="authentication">
                 <option value="email">EMAIL</option>
-                <option value="gsm">TELEPHONE</option>
+                <option value="tel">TELEPHONE</option>
               </select>
-  
-              <label for="email">Adresse Email</label>
-              <input type="email" id="email" formControlName="email" required>
+
+              <div *ngIf="captchaForm.get('authentication')?.value === 'email'">
+                <label for="email">Adresse Email</label>
+                <input type="email" id="email" formControlName="email" required>
+              </div>
+            
+              <div *ngIf="captchaForm.get('authentication')?.value === 'tel'">
+                <label for="phone">Numéro de Téléphone</label>
+                <input type="tel" id="phone" formControlName="phone" required>
+              </div>
   
               <label for="captcha">Captcha</label>
-              <input type="text" id="captcha" formControlName="captcha" required>
               <img *ngIf="base64Image" [src]="base64Image" alt="Captcha Image" class="captcha-image">
+              <input type="text" id="captcha" formControlName="captcha" required>
 
-  
               <button type="submit" >Soumettre</button>
             </form>
           </div>
@@ -66,10 +62,6 @@
       </section>
     </main>
   
-    <footer class="footer">
-      <div class="container">
-        <p>© 2024 ANID Togo - Tous droits réservés</p>
-      </div>
-    </footer>
+    <app-footer-component></app-footer-component>
   </router-outlet>
   

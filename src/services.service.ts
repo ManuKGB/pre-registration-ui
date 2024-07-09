@@ -7,17 +7,17 @@ import { Injectable } from '@angular/core';
 })
 export class ServicesService {
 
-  baseUrl="http://localhost:8080/api"
+  baseUrl="https://captcha-web-service-v2-0.onrender.com/api/captcha"
 
   constructor(private http : HttpClient) {
     
    }
    getCaptchaImage() {
-    return this.http.get(this.baseUrl + '/getCaptcha');
+    return this.http.get(this.baseUrl + '/create');
   }
 
   validateCaptcha(captchaId:any,userInput:any){
-    return this.http.get(this.baseUrl+"/validateCaptcha/"+captchaId+"?captchaAnswer="+userInput);
+    return this.http.get(this.baseUrl+"/validate/"+captchaId+"?captchaAnswer="+userInput);
   }
 
 }

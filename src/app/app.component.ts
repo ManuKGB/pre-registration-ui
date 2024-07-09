@@ -12,6 +12,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ServicesService } from '../services.service';
+import { HeaderComponentComponent } from './header-component/header-component.component';
+import { FooterComponentComponent } from './footer-component/footer-component.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,9 @@ import { ServicesService } from '../services.service';
   imports: [
     RouterOutlet,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeaderComponentComponent,
+    FooterComponentComponent
   ], 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
