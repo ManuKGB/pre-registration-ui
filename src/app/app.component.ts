@@ -89,6 +89,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmitOTP() {
-    alert()
+    alert()  
+    
   }
 }
