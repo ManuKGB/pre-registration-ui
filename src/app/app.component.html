@@ -10,7 +10,6 @@
                 </p>
             </div>
         </section>
-
         <nav class="breadcrumb">
             <div class="container">
                 <a href="#">Accueil</a>
@@ -18,7 +17,6 @@
                 <a href="#">Login</a>
             </div>
         </nav>
-
         <section class="steps">
             <div class="container">
                 <div class="left card">
@@ -44,47 +42,66 @@
                         Merci de choisir la langue et saisir l'adresse Email ou le numéro de
                         GSM.
                     </p>
-                    <form [formGroup]="captchaForm" (ngSubmit)="onSubmit()" class="highlight">
-                        <label for="language">Langage de l'application</label>
-                        <select id="language" formControlName="language">
-                            <option value="français">FRANÇAIS</option>
-                            <option value="anglais">ANGLAIS</option>
-                        </select>
+                    <span *ngIf="!form2">
+                        <form [formGroup]="captchaForm" (ngSubmit)="onSubmitCaptcha()" class="highlight">
+                            <label for="language">Langage de l'application</label>
+                            <select id="language" formControlName="language">
+                                <option value="français">FRANÇAIS</option>
+                                <option value="anglais">ANGLAIS</option>
+                            </select>
 
-                        <label for="authentication">Canal d'authentification</label>
-                        <select id="authentication" formControlName="authentication">
-                            <option value="email">EMAIL</option>
-                            <option value="phone">TELEPHONE</option>
-                        </select>
+                            <label for="authentication">Canal d'authentification</label>
+                            <select id="authentication" formControlName="authentication">
+                                <option value="email">EMAIL</option>
+                                <option value="phone">TELEPHONE</option>
+                            </select>
 
-                        <div *ngIf="captchaForm.get('authentication')?.value === 'email'">
-                            <label for="email">Adresse Email</label>
-                            <input type="email" id="email" formControlName="verifId" required
-                                placeholder="Entrez votre adresse e-mail" />
-                        </div>
-
-                        <div *ngIf="captchaForm.get('authentication')?.value === 'phone'">
-                            <div class="phone-input-row">
-                                <div class="phone-indicatif">
-                                    <label for="indicatif">Indicatif</label>
-                                    <input type="text" id="indicatif" value="+228" readonly />
-                                </div>
-                                <div class="phone-numero">
-                                    <label for="numero">Numéro de Téléphone</label>
-                                    <input type="tel" id="numero" formControlName="verifId" required />
+                            <div *ngIf="captchaForm.get('authentication')?.value === 'email'">
+                                <label for="email">Adresse Email</label>
+                                <input type="email" id="email" formControlName="verifId" required
+                                    placeholder="Entrez votre adresse e-mail" />
+                            </div>
+                            <div *ngIf="captchaForm.get('authentication')?.value === 'phone'">
+                                <div class="phone-input-row">
+                                    <div class="phone-indicatif">
+                                        <label for="indicatif">Indicatif</label>
+                                        <input type="text" id="indicatif" value="+228" readonly />
+                                    </div>
+                                    <div class="phone-numero">
+                                        <label for="numero">Numéro de Téléphone</label>
+                                        <input type="tel" id="numero" formControlName="verifId" required />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <img *ngIf="base64Image" [src]="base64Image" alt="Captcha Image" class="captcha-image" />
-                        <input type="text" id="captcha" formControlName="captcha" required placeholder="CAPTCHA" />
+                            <img *ngIf="base64Image" [src]="base64Image" alt="Captcha Image" class="captcha-image" />
+                            <input type="text" id="captcha" formControlName="captcha" required placeholder="CAPTCHA" />
 
-                        <button type="submit">
-                            <strong>
-                                ENVOYER CODE ACCES
-                            </strong>
-                        </button>
-                    </form>
+                            <button type="submit" [disabled]="!captchaForm.valid">
+                                <strong> ENVOYER CODE ACCES </strong>
+                            </button>
+                        </form>
+                    </span>
+                    <span *ngIf="form2">
+                        <form class="highlight" [formGroup]="otpForm" (ngSubmit)="onSubmitOTP()">
+                            <label for="language">Langage de l'application</label>
+                            <select id="language">
+                                <option value="français">FRANÇAIS</option>
+                                <option value="anglais">ANGLAIS</option>
+                            </select>
+                            <div>
+                                <div class="phone-input-row">
+                                    <div class="phone-numero">
+                                        <label for="numero">Code d'accès (OTP) </label>
+                                        <input type="tel" id="otp" required formControlName="otp" />
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" [disabled]="!otpForm.valid">
+                                <strong> VALIDER </strong>
+                            </button>
+                        </form>
+                    </span>
                 </div>
             </div>
         </section>

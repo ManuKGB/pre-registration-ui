@@ -154,7 +154,7 @@ body {
     height: auto;
 }
 
-.steps button {
+/* .steps button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
@@ -162,11 +162,12 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
+} */
 
-.steps button:hover {
+
+/* .steps button:hover {
     background-color: #002244;
-}
+} */
 
 .footer {
     background-color: #fff;
@@ -235,7 +236,7 @@ body {
     margin-bottom: 4px;
   }
   
-  form.highlight button[type="submit"] {
+  /* form.highlight button[type="submit"] {
     width: 40%;
     padding: 5px;
     height: 35px;
@@ -246,7 +247,7 @@ body {
     font-size: 12px;
     cursor: pointer;
     font-family: 'Poppins';
-  }
+  } */
   
 
   
@@ -278,10 +279,27 @@ input[type="tel"] {
     box-sizing: border-box;
 }
 
-button[disabled] {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    border: 1px solid #ccc;
-    padding: 8px 12px;
+form.highlight button[type="submit"] {
+    width: 40%;
+    padding: 5px;
+    height: 35px;
+    background-color: #0aa17a; /* Vert pour le bouton actif */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Poppins';
 }
+
+form.highlight button[type="submit"][disabled] {
+    background-color: #ccc;  /* Couleur de fond grisée */
+    color: #666;            /* Couleur du texte grisée */
+    cursor: not-allowed;    /* Changement du curseur pour indiquer que le bouton est désactivé */
+    border: none;           /* Suppression des bordures */
+}
+
+  .validespan {
+    color: red; /* Couleur du texte du timer */
+  }
+  

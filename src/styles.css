@@ -159,7 +159,7 @@ html, body { height: 100%; }
     height: auto;
 }
 
-.steps button {
+/* .steps button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
@@ -167,11 +167,11 @@ html, body { height: 100%; }
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
+} */
 
-.steps button:hover {
+/* .steps button:hover {
     background-color: #002244;
-}
+} */
 
 .footer {
     background-color: #fff;
@@ -190,7 +190,7 @@ html, body { height: 100%; }
     margin-bottom: 16px;
   }
   
-  button {
+  /* button {
     display: block;
     margin: 20px 0;
-  }
+  } */

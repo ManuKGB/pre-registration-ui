@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -14,16 +14,20 @@ import { ServicesService } from '../services.service';
 import { HeaderComponentComponent } from './header-component/header-component.component';
 import { FooterComponentComponent } from './footer-component/footer-component.component';
 
+import { CountdownModule } from 'ngx-countdown';
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
     CommonModule,
+    CountdownModule,
     ReactiveFormsModule,
     HeaderComponentComponent,
     FooterComponentComponent,
   ],
+
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -31,7 +35,9 @@ export class AppComponent implements OnInit {
   title = 'pre-registration-ui';
   base64Image: string | undefined;
   captchaForm: FormGroup;
+  otpForm : FormGroup
   captchaId: any;
+  form2 = false;
 
   constructor(private service: ServicesService) {
     this.captchaForm = new FormGroup({
@@ -40,6 +46,9 @@ export class AppComponent implements OnInit {
       verifId: new FormControl(''),
       captcha: new FormControl('', Validators.required),
     });
+    this.otpForm = new FormGroup({
+      otp : new FormControl('',Validators.required)
+    })
   }
 
   ngOnInit() {
@@ -49,14 +58,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    
-    if (this.captchaForm.valid) {
-      this.service
+  onSubmitCaptcha() {
+    this.service
       .validateCaptcha(this.captchaId, this.captchaForm.value.captcha)
       .subscribe((response: any) => {
         if (response.challenge == 'success') {
-          console.log("email to send to "+this.captchaForm.value.verifId);
+          this.form2 = true;
+          
           Swal.fire({
             position: 'top-end',
             title: 'Good job!',
@@ -66,6 +74,8 @@ export class AppComponent implements OnInit {
             showConfirmButton: false,
           });
         } else if (response.challenge == 'fail') {
+          this.ngOnInit();
+          this.captchaForm.get('captcha')?.setValue('');
           Swal.fire({
             position: 'top-end',
             title: 'Error!',
@@ -76,16 +86,9 @@ export class AppComponent implements OnInit {
           });
         }
       });
-    }else{
-      Swal.fire({
-        position: 'top-end',
-        title: 'Error!',
-        text: 'Verifier les champs !',
-        icon: 'error',
-        timer: 1000,
-        showConfirmButton: false,
-      });
-    }
-   
+  }
+
+  onSubmitOTP() {
+    alert()
   }
 }

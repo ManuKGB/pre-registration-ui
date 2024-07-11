@@ -20,4 +20,8 @@ export class ServicesService {
     return this.http.get(this.baseUrl+"/validate/"+captchaId+"?captchaAnswer="+userInput);
   }
 
+  getOTP(){
+    //return this.http.
+  }
+
 }
