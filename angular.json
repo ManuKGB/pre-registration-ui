@@ -21,10 +21,9 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-             "src/assets"
+              "src/assets"
             ],
             "styles": [
-              
               "src/styles.css"
             ],
             "scripts": [],
@@ -44,8 +43,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "4mb",
+                  "maximumError": "8mb"
                 }
               ],
               "outputHashing": "all"
@@ -88,10 +87,17 @@
               }
             ],
             "styles": [
-              
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/pre-registration-ui",
+            "netlifyToken": "nfp_wWsSnsakCq4fxzcCdHdu9YdpXfJt7Nfi05f5",
+            "siteId": "b519dc0e-a0c4-4188-b598-f69479b2457c"
           }
         }
       }
